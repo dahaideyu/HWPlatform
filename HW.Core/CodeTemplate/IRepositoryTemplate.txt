@@ -1,0 +1,11 @@
+﻿using System;
+using HW.Core.Repositories;
+using HW.SF.Models.SYSModel;
+using {ModelsNamespace};
+
+namespace {IRepositoriesNamespace}
+{
+    public interface I{ModelTypeName}Repository:IRepository<{ModelName}, {KeyTypeName}>
+    {
+    }
+}

@@ -1,0 +1,17 @@
+﻿using System;
+using HW.SF.Models;
+using HW.Core.Repositories;
+using HW.SF.Models.SYSModel;
+using HW.Core.EfDbContext;
+using {IRepositoriesNamespace};
+using {ModelsNamespace};
+
+namespace {RepositoriesNamespace}
+{
+    public class {ModelTypeName}Repository : BaseRepository<{ModelName}, {KeyTypeName}>, I{ModelTypeName}Repository
+    {
+        public {ModelTypeName}Repository(DefaultDbContext dbContext) : base(dbContext)
+        {
+        }
+    }
+}

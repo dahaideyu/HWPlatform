@@ -1,0 +1,10 @@
+﻿using System;
+using HW.Core.Services;
+using {ModelsNamespace};
+
+namespace {IServicsNamespace}
+{
+    public interface I{ModelTypeName}Service:IService<{ModelName}, {KeyTypeName}>
+    {
+    }
+}

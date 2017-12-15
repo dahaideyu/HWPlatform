@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HW.Core\HW.Core.csproj" />
+    <ProjectReference Include="..\HW.SF.IRepositories\HW.SF.IRepositories.csproj" />
+    <ProjectReference Include="..\HW.SF.Models\HW.SF.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,14 @@
+﻿using System;
+using {IRepositoriesNamespace};
+using {IServicsNamespace};
+using {ModelsNamespace};
+using HW.Core.Services;
+namespace {ServicesNamespace}
+{
+    public class {ModelTypeName}Service: BaseService<{ModelName}, {KeyTypeName}>, I{ModelTypeName}Service
+    {
+        public {ModelTypeName}Service(I{ModelTypeName}Repository repository) : base(repository)
+        {
+        }
+    }
+}

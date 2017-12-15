@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HW.Core\HW.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Code\DBSchema.cs">
+      <DependentUpon>DBSchema.ttinclude</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Code\GetSummery.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GetSummery.ttinclude</DependentUpon>
+    </Compile>
+    <Compile Update="Code\MultiDocument.cs">
+      <DependentUpon>MultiDocument.ttinclude</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Code\SFTextTemplate.cs">
+      <DependentUpon>SFTextTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SYSModel\TextTemplate1.cs">
+      <DependentUpon>TextTemplate1.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Code\DBSchema.tt">
+      <LastGenOutput>DBSchema.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Code\DBSchema.ttinclude">
+      <LastGenOutput>DBSchema.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Code\DBSchema.txt">
+      <DependentUpon>DBSchema.tt</DependentUpon>
+      <LastGenOutput>DBSchema.cs</LastGenOutput>
+      <DesignTime>True</DesignTime>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Update="Code\GetSummery.ttinclude">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GetSummery.cs</LastGenOutput>
+    </None>
+    <None Update="Code\MultiDocument.ttinclude">
+      <LastGenOutput>MultiDocument.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Code\SFTextTemplate.tt">
+      <LastGenOutput>SFTextTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="SYSModel\TextTemplate1.tt">
+      <LastGenOutput>TextTemplate1.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>
