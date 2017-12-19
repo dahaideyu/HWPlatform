@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using HW.Web.Infrastructure;
+using HW.Core.Auth;
 
 namespace HW.Web
 {
@@ -51,6 +52,8 @@ namespace HW.Web
                 app.UseExceptionHandler("/Home/Error");
             }
             auth.ConfigureAuthApplication(app);
+            app.UseExceptionHandler();
+           // app.UseMiddleware<TokenProviderMiddleware>();
             app.UseMvc();
             app.UseMvcWithDefaultRoute();
         }
