@@ -31,9 +31,19 @@ using log4net;
 
 namespace WebApp
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static ILoggerRepository repository { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -44,13 +54,17 @@ namespace WebApp
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var urls = "http://localhost:6901/";
             services.AddCors(options =>
             options.AddPolicy("MyDomain",
-        builder => builder.WithOrigins(urls).AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin().AllowCredentials()));
+            builder => builder.WithOrigins(urls).AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin().AllowCredentials()));
 
             //读取配置文件
             var audienceConfig = Configuration.GetSection("Audience");
@@ -122,24 +136,7 @@ namespace WebApp
             {
                 option.Filters.Add(new GlobalExceptionFilter());
             });
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Info
-                {
-                    Title = "  Test",
-                    Version = "v1",
-                    Description = " 测试Web API ",
-                    TermsOfService = "None",
-                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact
-                    {
-                        Name = "lucus",
-                        Email = "dahaideyu@sina.com"
-                    },
-                });
-                var filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "WebApp.xml");
-                c.IncludeXmlComments(filePath);
-                c.CustomSchemaIds((type) => type.FullName);
-            });
+            SwaggerConfig.AddSwaggerGen(services);
             services.AddMemoryCache();//启用MemoryCache
             services.Configure<MemoryCacheEntryOptions>(
                     options => options.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)) //设置MemoryCache缓存有效时间为5分钟。
@@ -147,7 +144,11 @@ namespace WebApp
                     option.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5));//设置Redis缓存有效时间为5分钟。
           return  IOCRegister.InitIoC(services, Configuration);
         }
-
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -162,18 +163,7 @@ namespace WebApp
             }
             app.UseStaticFiles();
             app.UseMvc();
-            app.UseSwagger(c =>
-            {
-                c.PreSerializeFilters.Add((swaggerDoc, httpReq) => swaggerDoc.Host = httpReq.Host.Value);
-                c.RouteTemplate = "docs/{documentName}/swagger.json";
-            });
-            app.UseSwaggerUI(c =>
-            {
-                c.RoutePrefix = "docs";
-                c.SwaggerEndpoint("/docs/v1/swagger.json", "API V1");
-                c.InjectStylesheet("/swagger-ui/custom.css");
-                c.InjectOnCompleteJavaScript("/swagger-ui/custom.js");
-            });
+            SwaggerConfig.UseSwaggerUI(app);
         }
 
     }

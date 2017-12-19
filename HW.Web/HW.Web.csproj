@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>f0bb32ed-31f8-4435-9095-e98ed9e78bd3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\BaseData\Data\" />
+    <Folder Include="Areas\BaseData\Models\" />
+    <Folder Include="Areas\BaseData\Views\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.2.0-preview2-41113220915" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HW.Core\HW.Core.csproj" />
+    <ProjectReference Include="..\HW.SF.IRepositories\HW.SF.IRepositories.csproj" />
+    <ProjectReference Include="..\HW.SF.IServices\HW.SF.IServices.csproj" />
+    <ProjectReference Include="..\HW.SF.Models\HW.SF.Models.csproj" />
+    <ProjectReference Include="..\HW.SF.Repositories\HW.SF.Repositories.csproj" />
+    <ProjectReference Include="..\HW.SF.Services\HW.SF.Services.csproj" />
+  </ItemGroup>
+
+</Project>

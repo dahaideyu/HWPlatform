@@ -14,6 +14,9 @@ using HW.SF.Models.SYSModel;
 
 namespace WebApp.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Login")]
     public class AuthController : Controller
@@ -23,11 +26,23 @@ namespace WebApp.Controllers
         /// </summary>
         PermissionRequirement _requirement;
         IUserService _userService;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requirement"></param>
+        /// <param name="userService"></param>
         public AuthController(PermissionRequirement requirement, IUserService userService)
         {
             _requirement = requirement;
             _userService = userService;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("/api/login")]
         public IActionResult Login(string username, string password, string role)
@@ -61,6 +76,10 @@ namespace WebApp.Controllers
            
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("/api/CodeGenerate")]
         public string CodeGenerate()
@@ -71,8 +90,13 @@ namespace WebApp.Controllers
             //return View(list);
             return "success";
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+      //  [Authorize("Permission")]
         [AllowAnonymous]
-        [HttpPost("/api/GetUserInfo")]
+        [HttpGet("/api/GetUserInfo")]
         public List<Sys_User> GetUserInfo()
         {
            var userinfolist=  _userService.Get(t=>t.F_EnabledMark==true).ToList();

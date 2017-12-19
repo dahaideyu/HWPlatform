@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Test";
+}
+
+<h2>Test</h2>
+
+<button id="getToken">getToken</button>
+<button id="requestAPI">requestAPI</button>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+        $(function () {
+            var accessToken = undefined;
+
+            $("#getToken").click(function () {
+                $.post(
+                    "http://localhost:7779/api/token",
+                    { username: "TEST", password: "TEST123" },
+                    function (data) {
+                        console.log(data);
+                        if (data.stateCode == 1)
+                        {
+                            accessToken = data.access_token;
+debugger;
+                            $.ajaxSetup({
+                                headers: { "Authorization": "Bearer " + accessToken }
+                            });
+                        }
+                    },
+                    "json"
+                );
+            })
+
+            $("#requestAPI").click(function () {
+                $.get("http://localhost:7779/api/Values", {}, function (data) {
+				debugger;
+                    alert(data);
+                }, "text");
+            })
+        })
+</script>
