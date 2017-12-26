@@ -5,6 +5,10 @@
     <UserSecretsId>f0bb32ed-31f8-4435-9095-e98ed9e78bd3</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\HW.Web.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="Areas\BaseData\Data\" />
     <Folder Include="Areas\BaseData\Models\" />
@@ -17,7 +21,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
+    <PackageReference Include="Swashbuckle.SwaggerGen" Version="6.0.0-beta902" />
+    <PackageReference Include="Swashbuckle.SwaggerUi" Version="6.0.0-beta902" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.2.0-preview2-41113220915" />
   </ItemGroup>
 

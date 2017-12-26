@@ -8,11 +8,13 @@ using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HW.Web.Controllers
 {
     [Produces("application/json")]
     [Route("api/Token")]
+    [AllowAnonymous]
     public class TokenController : Controller
     {
         [HttpPost]

@@ -36,6 +36,7 @@ namespace HW.Web
             services.AddMvc();
             //配置验证
             auth.ConfigureAuthService(services, Configuration);
+            SwaggerConfig.ServicesConfig(services);
             return IOCRegister.InitIoC(services, Configuration);
         }
 
@@ -53,7 +54,8 @@ namespace HW.Web
             }
             auth.ConfigureAuthApplication(app);
             app.UseExceptionHandler();
-           // app.UseMiddleware<TokenProviderMiddleware>();
+            // app.UseMiddleware<TokenProviderMiddleware>();
+            SwaggerConfig.AppConfig(app);
             app.UseMvc();
             app.UseMvcWithDefaultRoute();
         }
